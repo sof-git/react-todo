@@ -1,0 +1,41 @@
+.form-addTodo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    max-width: 400px;
+    margin:0 auto;
+    
+    .field{
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .form-input-name{
+        
+    }
+    .form-input-desc{
+        height: 200px;
+    }
+    .form-submit{
+        width: 100%;
+        background: $done;
+        color: #FFF;
+        border: none;
+        border-radius: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    .error{
+        background: $warning;
+        width: fit-content;
+        padding: 15px;
+        color: #FFF;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+}
+
+
+

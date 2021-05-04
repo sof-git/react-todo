@@ -1,0 +1,20 @@
+.navbar{
+    padding: 20px;
+    background: $primary;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+
+    .links{
+        margin-left: auto;
+    }
+    a{
+        text-decoration: none;
+        margin-left: 10px;
+        padding: 5px;
+        color: #FFFFFF;
+    }
+
+}
