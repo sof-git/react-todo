@@ -1,29 +1,37 @@
-.todo-card{
-    max-width: 500px;
-    display: flex;
-    border: solid 1px;
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 10px;
-    text-decoration: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-
-
-    .todo-card-title{
-        color: $todo-card-title;
-        padding: 5px;
-        margin-left: 10px;
-
+.home{
+    .todo-card{
+        max-width: 500px;
+        display: flex;
+        border: solid 1px;
+        border-radius: 5px;
+        margin: 10px auto;
+        padding: 10px;
+        text-decoration: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        
+    
+        .todo-card-title{
+            color: $todo-card-title;
+            padding: 5px;
+            margin-left: 10px;
+    
+        }
+        .difficulty{
+            margin-left: auto;
+        }
+        .todo-card-color{
+            background: $default;
+            width: 50px;
+            height: 25px;
+        }
     }
-    .difficulty{
-        margin-left: auto;
-    }
-    .todo-card-color{
-        background: $default;
-        width: 50px;
-        height: 25px;
+    
+    .warning-message{
+        margin-top: 10px;
+        text-align: center;
     }
 }
+
