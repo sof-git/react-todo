@@ -6,17 +6,15 @@ import { Link } from 'react-router-dom';
 
 
 const TodosList = (data) => {
-    const todos = data.data
-
+    const todos = data.data;
     
     return ( 
-        <div>
+        <div className="todo-card-list">
             {todos.map( todo => (
                 <Link className="todo-card" to={`/todoDetails/${todo.name}`} key={todo._id}>
-                    <p></p>
                     <h3 className="todo-card-title">{todo.name}</h3>
-                    <p className="todo-card-desc">{todo.description_fr}</p>
-                    <p className="todo-card-desc difficulty">difficulty: {todo.difficulty}</p>               
+                    <div className="todo-card-desc difficulty"><p>difficulty: {todo.difficulty}</p></div>            
+                    <div className="todo-card-desc priority"><p>Priority: {todo.priority}</p></div>
                 </Link>
             ))}
         </div>

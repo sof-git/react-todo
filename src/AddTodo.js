@@ -7,58 +7,91 @@ const AddTodo = () => {
     const [description,setDescription] = useState('');
     const [difficulty, setDifficulty] = useState(1);
     const [priority,setPriority] = useState('Low')
-    const [error,setError] = useState(false);
+    const [ErrorNameMessage,setErrorNameMessage] = useState(false);
     const [confirmation,setConfirmation] = useState(false);
+    const [nameErrorClass,setnameErrorClass] = useState('form-input-name field');
+    const [descErrorClass,setDescErrorClass] = useState('form-input-desc field');
+    
+    const [nameError,setNameError] = useState(false);
+    const [descError,setDescError] = useState(false);
     const history = useHistory();
     
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const creation_date = Date.now()
-        const todo = {name:todoName,description,difficulty,priority,creation_date};
-        console.log(todo)
-        try {
-            const res = await axios.post('http://localhost:1000/api/addTodo',todo);
-            console.log(res)
-            if (res.status === 200){
-                setError(false)
-                setConfirmation(true)
-               const redirect = setTimeout(()=>{
-                    history.push('/');console.log('fired') 
-                }, 3000);
-                return()=>{clearTimeout(redirect)};
-            }
-        } 
-        catch (err) {
-            console.error(err)
-            setError(true)
-        } 
+        setNameError(false)
+        setnameErrorClass('form-input-name field')
+        setDescError(false)
+        setDescErrorClass('form-input-desc field')        
+
+        if (!todoName){
+            console.log(todoName)
+            setNameError(true)
+            setnameErrorClass('form-input-name field inputError')
+
+        } if (!description){
+            console.log(description)
+            setDescError(true)
+            setDescErrorClass('form-input-desc field inputError')
+        }
+        else {
+            const creation_date = Date.now();
+            const todo = {name:todoName,description,difficulty,priority,creation_date};
+            console.log(todo)
+            try {
+                const res = await axios.post('http://localhost:1000/api/addTodo',todo);
+                console.log(res)
+                if (res.status === 200){
+                    setErrorNameMessage(false)
+                    setErrorNameMessage(false)
+                    setConfirmation(true)
+                    setNameError(false)
+                    setnameErrorClass('form-input-name field')
+                    setDescError(false)
+                    setDescErrorClass('form-input-desc field')        
+                   const redirect = setTimeout(()=>{
+                        history.push('/');console.log('fired') 
+                    }, 3000);
+                    return()=>{clearTimeout(redirect)};
+                }
+    
+            } 
+            catch (err) {
+                if (err.response.status === 409){
+                    setErrorNameMessage(true)
+                    setnameErrorClass('form-input-name field inputError')
+                }
+    
+            } 
+        }
+
         
     }
 
     return ( 
         <div className="form-addTodo">
-            {error && <div className="error">A task has already the same name</div>}
-            {confirmation && <div className="confirmation">The task has been successfully added</div>}
+
             <h1>Add a todo</h1>
             <form onSubmit={handleSubmit}>
                 <label>Todo name
                     <input 
                         type="text"
-                        required
                         value={todoName}
                         onChange={(e) => setTodoName(e.target.value)}
-                        className="form-input-name field"
+                        className={nameErrorClass}
                     />
+                {ErrorNameMessage && <p className='error'>A task has already the same name</p>}
+                {nameError && <p className="error">The field is empty</p>}
                 </label>
+
                 <label>Description
                     <textarea
-                        className="form-input-desc field"
+                        className={descErrorClass}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        required
                     >
                     </textarea>
+                {descError && <p className="error">The field is empty</p>}
                 </label>
                 <label>Difficulty
                     <select 
@@ -90,6 +123,7 @@ const AddTodo = () => {
                 </label>
                 <button className="form-submit">Add todo</button>
             </form>
+            {confirmation && <div className="confirmation">The task has been successfully added</div>}
         </div>
      );
 }

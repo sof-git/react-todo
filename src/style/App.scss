@@ -2,9 +2,17 @@
 @import "navbar.scss";
 @import "home.scss";
 @import "addTodo.scss";
-*{
+@import "todoDetails.scss";
+
+
+body{
     margin:0;
 }
 h1{
     text-align: center;
+}
+.App{
+    background: $background;
+    height: 800px;
+
 }

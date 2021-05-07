@@ -1,0 +1,48 @@
+.todo-details{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    background: $white;
+    max-width: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.32);
+    
+    .todo-details-title{
+        margin:  auto;
+        width: 100%;
+        border-bottom: solid 1px $primary;
+
+        h1{
+            margin:0;
+            color: $primary;
+        }
+    }
+    h3{
+        color: $white;
+        margin: 5px;
+    }
+    .todo-details-content{
+        background: $primary;
+        width: 100%;
+    }
+    .todo-details-desc{
+        background: $white;
+        border-radius: 5px;
+        height: 200px;
+        margin: 10px 5px;
+        padding: 5px;
+    }
+    .todo-details-infos{
+        font-weight: 500;
+        color: #FFF;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 5px;
+        align-items: center;
+    }
+
+}

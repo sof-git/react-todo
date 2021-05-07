@@ -1,26 +1,39 @@
 .home{
+    .todo-card-list{
+        margin-bottom: 50px;
+    }
     .todo-card{
         max-width: 500px;
         display: flex;
-        border: solid 1px;
         border-radius: 5px;
         margin: 10px auto;
         padding: 10px;
         text-decoration: none;
         flex-direction: row;
         flex-wrap: wrap;
+        height: 45px;
         align-content: center;
         align-items: center;
+        background: $white;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.32);
         
-    
         .todo-card-title{
             color: $todo-card-title;
             padding: 5px;
             margin-left: 10px;
     
         }
+
+
+
+        .difficulty,.priority{
+            color: $primary;
+        }
         .difficulty{
             margin-left: auto;
+        }
+        .priority{
+            margin-left: 15px;
         }
         .todo-card-color{
             background: $default;
