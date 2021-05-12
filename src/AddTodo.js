@@ -9,8 +9,8 @@ const AddTodo = () => {
     const [priority,setPriority] = useState('Low')
     const [ErrorNameMessage,setErrorNameMessage] = useState(false);
     const [confirmation,setConfirmation] = useState(false);
-    const [nameErrorClass,setnameErrorClass] = useState('form-input-name field');
-    const [descErrorClass,setDescErrorClass] = useState('form-input-desc field');
+    const [nameInputClass,setnameInputClass] = useState('form-input-name field');
+    const [descInputClass,setdescInputClass] = useState('form-input-desc field');
     
     const [nameError,setNameError] = useState(false);
     const [descError,setDescError] = useState(false);
@@ -20,19 +20,19 @@ const AddTodo = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setNameError(false)
-        setnameErrorClass('form-input-name field')
+        setnameInputClass('form-input-name field')
         setDescError(false)
-        setDescErrorClass('form-input-desc field')        
+        setdescInputClass('form-input-desc field')        
 
         if (!todoName){
             console.log(todoName)
             setNameError(true)
-            setnameErrorClass('form-input-name field inputError')
+            setnameInputClass('form-input-name field inputError')
 
         } if (!description){
             console.log(description)
             setDescError(true)
-            setDescErrorClass('form-input-desc field inputError')
+            setdescInputClass('form-input-desc field inputError')
         }
         else {
             const creation_date = Date.now();
@@ -46,9 +46,9 @@ const AddTodo = () => {
                     setErrorNameMessage(false)
                     setConfirmation(true)
                     setNameError(false)
-                    setnameErrorClass('form-input-name field')
+                    setnameInputClass('form-input-name field')
                     setDescError(false)
-                    setDescErrorClass('form-input-desc field')        
+                    setdescInputClass('form-input-desc field')        
                    const redirect = setTimeout(()=>{
                         history.push('/');console.log('fired') 
                     }, 3000);
@@ -59,7 +59,7 @@ const AddTodo = () => {
             catch (err) {
                 if (err.response.status === 409){
                     setErrorNameMessage(true)
-                    setnameErrorClass('form-input-name field inputError')
+                    setnameInputClass('form-input-name field inputError')
                 }
     
             } 
@@ -78,7 +78,7 @@ const AddTodo = () => {
                         type="text"
                         value={todoName}
                         onChange={(e) => setTodoName(e.target.value)}
-                        className={nameErrorClass}
+                        className={nameInputClass}
                     />
                 {ErrorNameMessage && <p className='error'>A task has already the same name</p>}
                 {nameError && <p className="error">The field is empty</p>}
@@ -86,7 +86,7 @@ const AddTodo = () => {
 
                 <label>Description
                     <textarea
-                        className={descErrorClass}
+                        className={descInputClass}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     >
