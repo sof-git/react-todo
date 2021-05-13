@@ -1,7 +1,7 @@
 import { useHistory,useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai'
-import {BsFillTrashFill} from 'react-icons/bs'
+import { BsTrash } from 'react-icons/bs'
 import moment from 'moment'
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ const TodoDetails = () => {
     const { id } = useParams();
     const [date,setDate] = useState('');
     const [todoId,setTodoId] = useState('');
-    const [todo,setTodo] = useState({_id:'',name:'',description:'',difficulty:'',priority:''});
+    const [todo,setTodo] = useState({_id:'',name:'',description:'',difficulty:'',priority:'',done:''});
     const [edit,setEdit] = useState(false);
     const [confirmation, setConfirmation] = useState(false);
     const [nameInputClass,setnameInputClass] = useState('form-input-name field');
@@ -18,16 +18,21 @@ const TodoDetails = () => {
       const  fetchData = async()=>{
             const res = await axios.get('http://localhost:1000/api/getTodo', {params:{name:id}})
             setTodo(res.data.todo)
+            console.log(todo)
             setTodoId(res.data.todo._id)
             const date = moment(res.data.todo.creation_date).format('DD/MM/YYYY');
             setDate(date)
         }
         fetchData();
     },[])
-        
-    const handleDelete = React.useCallback((todoId)=>{
-        axios.delete('http://localhost:1000/api/deleteTodo/',{data:{id:todoId}})
-    },[])
+    
+    const handleDelete = async () => {
+        const res = await axios.delete('http://localhost:1000/api/deleteTodo',{data:{id:todo._id}})
+        if (res.status === 200){
+            window.location = '/'
+        }
+    }
+
 
     const handleUpdate = async (e)=>{
         e.preventDefault();
@@ -59,8 +64,8 @@ const TodoDetails = () => {
                         <p>Difficulty: {todo.difficulty}/5</p>
                         <p>Created: {date}</p>
                         <div>
-                            <AiOutlineEdit onClick={() => {setEdit(true)}} size={24}/>
-                            <BsFillTrashFill size={24}/>
+                            <AiOutlineEdit className="todo-icons" onClick={() => {setEdit(true)}} size={24}/>
+                            <BsTrash className="todo-icons" onClick={handleDelete} size={24}/>
                         </div>
                     </div>
                 </div>  
