@@ -2,14 +2,14 @@ import { useHistory,useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsTrash } from 'react-icons/bs'
-import moment from 'moment'
+import moment from 'moment';
 import axios from 'axios';
 
 const TodoDetails = () => {
     const { id } = useParams();
     const [date,setDate] = useState('');
     const [todoId,setTodoId] = useState('');
-    const [todo,setTodo] = useState({_id:'',name:'',description:'',difficulty:'',priority:'',done:''});
+    const [todo,setTodo] = useState({_id:'',name:'',description:'',difficulty:'1',priority:'1',done:''});
     const [edit,setEdit] = useState(false);
     const [confirmation, setConfirmation] = useState(false);
     const [nameInputClass,setnameInputClass] = useState('form-input-name field');
@@ -94,19 +94,19 @@ const TodoDetails = () => {
                         value={todo.priority}
                         onChange={(e) => setTodo({...todo,priority:e.target.value})}
                     >
-                        <option value="low">Low</option>
-                        <option value="minor">Minor</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="significant">Significant</option>
-                        <option value="required">Required</option>
-                        <option value="highest">Highest</option>
+                        <option value="1">Low</option>
+                        <option value="2">Minor</option>
+                        <option value="3">Moderate</option>
+                        <option value="4">Significant</option>
+                        <option value="5">Required</option>
+                        <option value="6">Highest</option>
                     </select>
                     <label>Difficulty</label>
                         <select
                             defaultValue={todo.difficulty}
                             onChange={(e) => setTodo({...todo,difficulty:e.target.value})}
                         >
-                            <option type="number" value="1">1 - Too easy</option>
+                            <option value="1">1 - Too easy</option>
                             <option value="2">2 - Easy</option>
                             <option value="3">3 - Medium</option>
                             <option value="4">4 - Hard</option>
