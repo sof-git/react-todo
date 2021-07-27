@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AddTodo from './AddTodo';
 import TodoDetails from './TodoDetails';
 import Navbar from './Navbar';
+import Register from './Register';
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/todoDetails/:id">
             <TodoDetails />
+          </Route>
+          <Route path="/register">
+            <Register/>
           </Route>
         </Switch>
       </div>

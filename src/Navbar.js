@@ -5,6 +5,7 @@ const Navbar = () => {
             <h1>My Todo App</h1>
             <div className="links">
                 <Link to="/">Home</Link>
+                <Link to="/register">Register</Link>
                 <Link to="/addTodo">Add a todo</Link>
             </div>
 

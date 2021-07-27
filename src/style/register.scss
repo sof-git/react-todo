@@ -1,0 +1,62 @@
+section{
+    form{
+        display: flex;
+        flex-direction: row;
+        max-width: 600px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: space-between;
+    }
+
+    .register-div-input-text{
+        display: flex;
+        max-width: min-content;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    div > label{
+        display: inline-block;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    .form-row{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .register-form-input-text{
+        height: 25px;
+        width: 200px;
+        border: solid 1px $primary;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    .input-error{
+        border: solid 2px $warning;
+    }
+    button{
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+        color: $primary;
+        background: $white;
+        border: solid 1px;
+        border-radius: 15px;
+        height: 30px;
+        margin-top: 15px;
+    }
+    .register-error-message{
+        color:$warning;
+        margin: 16px auto;
+        font-size: 18px;
+    }
+    .error{
+        margin-left: 10px;
+        color:$warning;
+    }
+}
